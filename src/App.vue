@@ -48,6 +48,8 @@ const songs = ref([
     src: import('./assets/Omah_Lay_-_Soso.mp3')
   },
 ]);
+const player = new Audio();
+
 const pause = () => {
   player.pause();
   isPlaying.value = false;
