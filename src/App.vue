@@ -1,5 +1,3 @@
-<script setup lang="ts">
-</script>
 
 <template>
   <div id="app">
@@ -29,9 +27,11 @@
   </div>
 </template>
 
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
+
 const isPlaying = ref(false);
 
-</template>
 const current = ref({});
 
 const index = ref(0);
@@ -48,6 +48,7 @@ const songs = ref([
     src: import('./assets/Omah_Lay_-_Soso.mp3')
   },
 ]);
+
 const player = new Audio();
 
 const play = (song) => {
@@ -95,6 +96,13 @@ const prev = () => {
   current.value = songs.value[index.value];
   play(current.value);
 };
+
+onMounted(() => {
+  current.value = songs.value[index.value];
+  player.src = current.value.src;
+});
+</script>
+
 <style scoped>
 header {
   display: flex;
