@@ -50,6 +50,27 @@ const songs = ref([
 ]);
 const player = new Audio();
 
+const play = (song) => {
+  if (typeof song.src != "undefined") {
+    current.value = song;
+    player.src = current.value.src;
+  }
+  player.play();
+  player.addEventListener(
+    "ended",
+    function () {
+      index.value++;
+      if (index.value > songs.value.length - 1) {
+        index.value = 0;
+      }
+
+      current.value = songs.value[index.value];
+      play(current.value);
+    }.bind(this)
+  );
+  isPlaying.value = true;
+};
+
 const pause = () => {
   player.pause();
   isPlaying.value = false;
