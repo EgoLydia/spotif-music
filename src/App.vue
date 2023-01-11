@@ -34,6 +34,8 @@ const isPlaying = ref(false);
 </template>
 const current = ref({});
 
+const index = ref(0);
+
 const songs = ref([
   {
     title: " Electricity",
@@ -46,6 +48,15 @@ const songs = ref([
     src: import('./assets/Omah_Lay_-_Soso.mp3')
   },
 ]);
+const next = () => {
+  index.value++;
+  if (index.value > songs.value.length - 1) {
+    index.value = 0;
+  }
+
+  current.value = songs.value[index.value];
+  play(current.value);
+};
 <style scoped>
 .logo {
   height: 6em;
