@@ -2,9 +2,19 @@
 </script>
 
 <template>
+  <div id="app">
+    <header>
+      <h1>Spotif - Music</h1>
+    </header>
+    <main>
+      <section class="player">
+        <h2 class="song-title">
+          {{ current.title }} - <span>{{ current.artiste }}</span>
+        </h2>
 
 
 </template>
+const current = ref({});
 
 <style scoped>
 .logo {
