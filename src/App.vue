@@ -57,6 +57,16 @@ const next = () => {
   current.value = songs.value[index.value];
   play(current.value);
 };
+
+const prev = () => {
+  index.value--;
+  if (index.value > 0) {
+    index.value = songs.value.length - 1;
+  }
+
+  current.value = songs.value[index.value];
+  play(current.value);
+};
 <style scoped>
 .logo {
   height: 6em;
