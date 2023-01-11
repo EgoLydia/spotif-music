@@ -11,6 +11,11 @@
         <h2 class="song-title">
           {{ current.title }} - <span>{{ current.artiste }}</span>
         </h2>
+        <div class="controls">
+          <button class="prev" @click="prev">Prev</button>
+          <button class="next" @click="next">Next</button>
+        </div>
+      </section>
 
 
 </template>
