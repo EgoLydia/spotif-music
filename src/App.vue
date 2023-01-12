@@ -11,14 +11,14 @@
         </h2>
         <div class="controls">
           <button class="prev" @click="prev">Prev</button>
-          <button class="play" v-if="isPlaying" @click="play">Play</button>
+          <button class="play" v-if="!isPlaying" @click="play">Play</button>
           <button class="pause" v-else @click="pause">Pause</button>
           <button class="next" @click="next">Next</button>
         </div>
       </section>
       <section class="playlist">
         <h3>The Playlist</h3>
-        <button v-for="song in songs" :key="song.src" @click="play(song)"
+        <button v-for="song in songs" :key="song.title" @click="play(song)"
           :class="song.src === current.src ? 'song-playing' : 'song'">
           {{ song.title }} - {{ song.artiste }}
         </button>
@@ -29,6 +29,8 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import songImg from './assets/Omah_Lay_-_Soso.mp3'
+import song from './assets/Pheelz_Ft_Davido_-_Electricity.mp3'
 
 const isPlaying = ref(false);
 
@@ -40,12 +42,12 @@ const songs = ref([
   {
     title: " Electricity",
     artiste: "Pheelz Ft Davido",
-    src: import('./assets/Pheelz_Ft_Davido_-_Electricity.mp3')
+    src: song
   },
   {
     title: "Soso",
     artiste: "Omah Lay",
-    src: import('./assets/Omah_Lay_-_Soso.mp3')
+    src: songImg
   },
 ]);
 
